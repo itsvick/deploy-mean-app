@@ -15,11 +15,11 @@ app.use(cors());
 
 const findTaskIndex = (id) => taskList.findIndex((item) => item._id === id);
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("here is the home page");
 });
 
-app.post("/create", (req, res) => {
+app.post("/api/create", (req, res) => {
   console.log(req.body);
   const _id = uuidv4();
   const task = { _id, ...req.body };
@@ -30,11 +30,11 @@ app.post("/create", (req, res) => {
   });
 });
 
-app.get("/getList", (req, res) => {
+app.get("/api/getList", (req, res) => {
   res.send(taskList);
 });
 
-app.get("/getTask/:id", (req, res) => {
+app.get("/api/getTask/:id", (req, res) => {
   console.log(req.params.id);
   const id = req.params.id;
   const index = findTaskIndex(id);
@@ -45,7 +45,7 @@ app.get("/getTask/:id", (req, res) => {
   }
 });
 
-app.patch("/updateTask/:id", (req, res) => {
+app.patch("/api/updateTask/:id", (req, res) => {
   const id = req.params.id;
   const index = findTaskIndex(id);
   if (index > -1) {
@@ -59,12 +59,12 @@ app.patch("/updateTask/:id", (req, res) => {
   }
 });
 
-app.delete("/clearList", (req, res) => {
+app.delete("/api/clearList", (req, res) => {
   taskList = [];
   res.send({ message: "All task deleted successfully!" });
 });
 
-app.delete("/deleteTask/:id", (req, res) => {
+app.delete("/api/deleteTask/:id", (req, res) => {
   const id = req.params.id;
   const index = findTaskIndex(id);
   if (index > -1) {

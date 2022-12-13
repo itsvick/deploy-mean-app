@@ -11,7 +11,7 @@ export class TasksService {
 
 
   addTask(title: string, description: string) {
-    this.httpClient.post(`${this.host}/create`, {
+    this.httpClient.post(`${this.host}/api/create`, {
       title,
       description
     }).subscribe((res) => {
@@ -20,6 +20,6 @@ export class TasksService {
   }
 
   getTaskList() {
-    return this.httpClient.get(`${this.host}/getList`);
+    return this.httpClient.get(`${this.host}/api/getList`);
   }
 }
