@@ -75,6 +75,10 @@ app.delete("/api/deleteTask/:id", (req, res) => {
   }
 });
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 app.listen(port, () => {
   console.log("App listening on port", port);
 });
