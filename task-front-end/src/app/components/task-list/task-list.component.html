@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Task List</h1>
+  <div *ngFor="let item of $taskList | async">
+    <h1>{{item.title}}</h1>
+    <p>{{item.description}}</p>
+  </div>
+</div>
