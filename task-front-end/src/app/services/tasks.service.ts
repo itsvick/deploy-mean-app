@@ -6,11 +6,12 @@ import { Injectable } from '@angular/core';
 })
 export class TasksService {
 
+  host = window.location.origin;
   constructor(private httpClient: HttpClient) { }
 
 
   addTask(title: string, description: string) {
-    this.httpClient.post('http://localhost:3000/create', {
+    this.httpClient.post(`${this.host}/create`, {
       title,
       description
     }).subscribe((res) => {
@@ -19,6 +20,6 @@ export class TasksService {
   }
 
   getTaskList() {
-    return this.httpClient.get('http://localhost:3000/getList');
+    return this.httpClient.get(`${this.host}/getList`);
   }
 }
